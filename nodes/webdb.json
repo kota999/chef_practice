@@ -1,11 +1,17 @@
 {
+  "httpd" : {
+    "port" : 80
+  },
   "run_list": [
     "recipe[dstat]",
     "recipe[apache]",
     "recipe[mysql]",
     "recipe[gcc]",
     "recipe[vim]",
-    "recipe[git]"
+    "recipe[git]",
+    "recipe[make]",
+    "recipe[zsh]",
+    "recipe[natsume]"
   ],
   "automatic": {
     "ipaddress": "webdb"
