@@ -25,7 +25,7 @@ user "natsume" do
 end
 
 group "webdb" do
-    action :modify
+    action [:create, :modify]
     members ['natsume']
     append true
 end
