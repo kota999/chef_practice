@@ -3,6 +3,7 @@
     "port" : 80
   },
   "run_list": [
+    "recipe[natsume]",
     "recipe[dstat]",
     "recipe[apache]",
     "recipe[mysql]",
@@ -11,7 +12,11 @@
     "recipe[git]",
     "recipe[make]",
     "recipe[zsh]",
-    "recipe[natsume]"
+    "recipe[yum_repo]",
+    "recipe[tmux]",
+    "recipe[pybrew]",
+    "recipe[cvxopt]",
+    "recipe[mpi4py]"
   ],
   "automatic": {
     "ipaddress": "webdb"
