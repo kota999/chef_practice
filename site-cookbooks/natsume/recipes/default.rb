@@ -46,7 +46,6 @@ bash "set_rc" do
     environment "HOME" => "/home/natsume"
     code <<-EOC
         cp dotfiles/zshrc .zshrc
-        cp dotfiles/zshenv_vagrant .zshenv
         cp dotfiles/vim/mylinux/vimrc .vimrc
     EOC
 end

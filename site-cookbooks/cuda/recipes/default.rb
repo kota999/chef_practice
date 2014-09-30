@@ -6,6 +6,11 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+#
+package "cuda" do
+    action :install
+end
+
 git "/home/natsume/local" do
     repository "git://github.com/lebedov/scikits.cuda.git"
     reference "master"

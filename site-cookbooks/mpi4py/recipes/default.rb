@@ -24,7 +24,10 @@ bash "mpi4py" do
         pybrew venv use lab -p 2.7.3
         export SITE_PACKAGES=$HOME/.pythonbrew/venvs/Python-2.7.3/lab/lib/python2.7/site-packages
         if ! [ -e $SITE_PACKAGES/mpi4py ]; then
-            cp $HOME/dotfiles/zshenv_vagrant .zshenv
+            echo "export OPENMPI=/usr/lib64/openmpi" >> $HOME/.zshenv
+            source $HOME/.zshenv
+            echo "export PATH=\\$PATH:\\$OPENMPI/bin" >> $HOME/.zshenv
+            echo "export LD_LIBRARY_PATH=\\$LD_LIBRARY_PATH:\\$OPENMPI/lib" >> $HOME/.zshenv
             source $HOME/.zshenv
             pip install mpi4py
         fi

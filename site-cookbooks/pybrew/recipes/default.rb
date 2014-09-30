@@ -24,6 +24,14 @@ end
     end
 end
 
+git "/home/natsume/local/matplotlib" do
+    repository "git://github.com/matplotlib/matplotlib.git"
+    reference "master"
+    action :checkout
+    user "natsume"
+    group "webdb"
+end
+
 bash "cfitsio" do
     user "vagrant"
     group "vagrant"
@@ -109,22 +117,28 @@ bash "pip_package" do
         if ! [ -e $SITE_PACKAGES/numpy ]; then
             pip install numpy
         fi
-        if ! [ -e $SITE_PACKAGES/scipy ]; then
-            pip install scipy
-        fi
-        if ! [ -e $SITE_PACKAGES/matplotlib ]; then
-            pip install matplotlib
-        fi
+        #if ! [ -e $SITE_PACKAGES/matplotlib ]; then
+            #pip install nose
+            #pip install mock
+            #pip install pyparsing
+            #pip install pygments
+            #pip install six
+            #pip install matplotlib
+        #fi
         if ! [ -e $SITE_PACKAGES/pyfits ]; then
             pip install pyfits
         fi
         if ! [ -e $SITE_PACKAGES/healpy ]; then
             pip install healpy
         fi
+        #if ! [ -e $SITE_PACKAGES/scipy ]; then
+            ##pip install scipy
+            #zsh $HOME/dotfiles/test.sh
+        #fi
     EOC
 end
 
-bash "pyminut" do
+bash "pyminuit" do
     user "natsume"
     group "webdb"
     cwd "/home/natsume"
@@ -143,8 +157,24 @@ bash "pyminut" do
             source $HOME/.pythonbrew/etc/bashrc
             pybrew venv use lab -p 2.7.3
             python setup.py install --with-minuit=$MINUIT/Minuit-1_7_9
-            cp $HOME/dotfiles/zshenv_vagrant .zshenv
+            echo "export MINUIT=\\$HOME/local/minuit" >> $HOME/.zshenv
+            echo "export LD_LIBRARY_PATH=\\$LD_LIBRARY_PATH:\\$MINUIT/lib" >> $HOME/.zshenv
         fi
     EOC
 end
 
+bash "matplotlib" do
+    user "natsume"
+    group "webdb"
+    cwd "/home/natsume"
+    environment "HOME" => "/home/natsume"
+    code <<-EOC
+        export SITE_PACKAGES=$HOME/.pythonbrew/venvs/Python-2.7.3/lab/lib/python2.7/site-packages
+        if ! [ -e $SITE_PACKAGES/matplotlib ]; then
+            source $HOME/.pythonbrew/etc/bashrc
+            pybrew venv use lab -p 2.7.3
+            cd $HOME/local/matplotlib
+            python setup.py install
+        fi
+    EOC
+end
