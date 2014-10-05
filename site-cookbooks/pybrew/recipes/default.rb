@@ -33,33 +33,31 @@ git "/home/natsume/local/matplotlib" do
 end
 
 bash "cfitsio" do
-    user "vagrant"
-    group "vagrant"
+    user "root"
     code <<-EOC
         cd /usr/local/src
         if ! [ -e cfitsio ]; then
-            sudo wget ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3280.tar.gz
-            sudo tar zxvf cfitsio3280.tar.gz
+            wget ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3280.tar.gz
+            tar zxvf cfitsio3280.tar.gz
             cd cfitsio
-            sudo ./configure && sudo make
-            sudo cp fitsio.h /usr/local/include
-            sudo cp longnam.h /usr/local/include
-            sudo cp libcfitsio.a /usr/lib
+            ./configure && make
+            cp fitsio.h /usr/local/include
+            cp longnam.h /usr/local/include
+            cp libcfitsio.a /usr/lib
         fi
     EOC
 end
 
 bash "freetype" do
-    user "vagrant"
-    group "vagrant"
+    user "root"
     code <<-EOC
         cd /usr/local/src
         if ! [ -e freetype-2.4.4 ]; then
-            sudo wget http://download.savannah.gnu.org/releases/freetype/freetype-2.4.4.tar.gz
-            sudo tar zxvf freetype-2.4.4.tar.gz
+            wget http://download.savannah.gnu.org/releases/freetype/freetype-2.4.4.tar.gz
+            tar zxvf freetype-2.4.4.tar.gz
             cd freetype-2.4.4
-            sudo ./configure && sudo make
-            sudo make install
+            ./configure && make
+            make install
         fi
     EOC
 end
@@ -117,24 +115,12 @@ bash "pip_package" do
         if ! [ -e $SITE_PACKAGES/numpy ]; then
             pip install numpy
         fi
-        #if ! [ -e $SITE_PACKAGES/matplotlib ]; then
-            #pip install nose
-            #pip install mock
-            #pip install pyparsing
-            #pip install pygments
-            #pip install six
-            #pip install matplotlib
-        #fi
         if ! [ -e $SITE_PACKAGES/pyfits ]; then
             pip install pyfits
         fi
         if ! [ -e $SITE_PACKAGES/healpy ]; then
             pip install healpy
         fi
-        #if ! [ -e $SITE_PACKAGES/scipy ]; then
-            ##pip install scipy
-            #zsh $HOME/dotfiles/test.sh
-        #fi
     EOC
 end
 

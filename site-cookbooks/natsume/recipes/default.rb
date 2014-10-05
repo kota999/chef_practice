@@ -47,5 +47,8 @@ bash "set_rc" do
     code <<-EOC
         cp dotfiles/zshrc .zshrc
         cp dotfiles/vim/mylinux/vimrc .vimrc
+        if ! [ -e local ]; then
+            mkdir local
+        fi
     EOC
 end

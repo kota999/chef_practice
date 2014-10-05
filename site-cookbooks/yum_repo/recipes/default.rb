@@ -6,29 +6,28 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-bash 'add_epel' do
-    user 'root'
-    code <<-EOC
-        rpm -ivh http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
-        sed -i -e "s/enabled *= *1/enabled=0/g" /etc/yum.repos.d/epel.repo
-    EOC
-    creates "/etc/yum.repos.d/epel.repo"
+yum_repository 'epel' do
+    description 'Extra Packages for Enterprise Linux'
+    mirrorlist 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=$basearch'
+    fastestmirror_enabled true
+    gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6'
+    action :create
 end
 
-bash 'add_rpmforge' do
-    user 'root'
-    code <<-EOC
-        rpm -ivh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-        sed -i -e "s/enabled *= *1/enabled=0/g" /etc/yum.repos.d/rpmforge.repo
-    EOC
-    creates "/etc/yum.repos.d/rpmforge.repo"
+
+yum_repository 'remi' do
+    description 'Les RPM de Remi - Repository'
+    baseurl 'http://rpms.famillecollet.com/enterprise/6/remi/x86_64/'
+    gpgkey 'http://rpms.famillecollet.com/RPM-GPG-KEY-remi'
+    fastestmirror_enabled true
+    action :create
 end
 
-bash 'add_remi' do
-    user 'root'
-    code <<-EOC
-        rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-        sed  -i  -e "s/enabled *= *1/enabled=0/g" /etc/yum.repos.d/remi.repo
-    EOC
-    creates "/etc/yum.repos.d/remi.repo"
+
+yum_repository 'rpmforge' do
+    mirrorlist 'http://mirrorlist.repoforge.org/el6/mirrors-rpmforge'
+    description 'RHEL $releasever - RPMforge.net - dag'
+    enabled true
+    gpgcheck true
+    gpgkey 'http://apt.sw.be/RPM-GPG-KEY.dag.txt'
 end

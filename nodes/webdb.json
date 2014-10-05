@@ -11,7 +11,6 @@
     "recipe[make]",
     "recipe[yum_repo]",
     "recipe[apache]",
-    "recipe[mysql]",
     "recipe[vim]",
     "recipe[tmux]",
     "recipe[pybrew]",

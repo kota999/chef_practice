@@ -43,10 +43,7 @@ package "lua-devel" do
 end
 
 bash "compile_vim" do
-    user "vagrant"
-    group "vagrant"
-    #cwd "/home/natsume"
-    #environment "HOME" => "/home/natsume"
+    user "root"
     code <<-EOC
         cd /usr/local/src
         if ! [ -e ./vim ]; then
