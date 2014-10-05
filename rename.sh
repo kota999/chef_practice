@@ -1,13 +1,14 @@
 # operator, can use sudo without password
-export OPERATOR=nkouta
+export OPERATOR=vagrant
 # create user, password
 export USER=cudauser
 export PASS=fermi-c2075
 # create group
 export GROUP=ynu
+export SSH_NAME=webdb
 
-sed -i -e "s|webdb|centos7|" nodes/webdb.json
-mv nodes/webdb.json nodes/centos7.json
+sed -i -e "s|webdb|$SSH_NAME|" nodes/webdb.json
+mv nodes/webdb.json nodes/$SSH_NAME.json
 
 rename_natsume(){    sed -i -e "s|natsume|$USER|" site-cookbooks/$1/recipes/default.rb;         }
 rename_webdb(){    sed -i -e "s|webdb|$GROUP|" site-cookbooks/$1/recipes/default.rb;     }
