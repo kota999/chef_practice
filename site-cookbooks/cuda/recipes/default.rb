@@ -11,19 +11,19 @@ package "cuda" do
     action :install
 end
 
-git "/home/natsume/local" do
+git "/home/testname/local" do
     repository "git://github.com/lebedov/scikits.cuda.git"
     reference "master"
     action :checkout
-    user "natsume"
-    group "webdb"
+    user "testname"
+    group "test"
 end
 
 bash "pycuda" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         source $HOME/.pythonbrew/etc/bashrc
         pybrew venv use lab -p 2.7.3

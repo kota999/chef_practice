@@ -15,10 +15,10 @@ package "openmpi-devel" do
 end
 
 bash "mpi4py" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         source $HOME/.pythonbrew/etc/bashrc
         pybrew venv use lab -p 2.7.3

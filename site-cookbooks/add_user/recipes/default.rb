@@ -15,35 +15,35 @@
     #end
 #end
 
-user "natsume" do
-    comment "natsume"
-    home "/home/natsume"
+user "testname" do
+    comment "testname"
+    home "/home/testname"
     shell "/bin/zsh"
-    password '1YznKMMJ2.iVg'
+    password 'YOUR_PASS'
     supports :manage_home => true
     action [:create, :manage, :modify]
 end
 
-group "webdb" do
+group "test" do
     action [:create, :modify]
-    members ['natsume']
+    members ['testname']
     append true
 end
 
-git "/home/natsume/dotfiles" do
+git "/home/testname/dotfiles" do
     repository "git://github.com/kota999/dotfiles.git"
     reference "master"
     action :sync
-    user "natsume"
-    group "webdb"
+    user "testname"
+    group "test"
 end
 
 
 bash "set_rc" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         cp dotfiles/zshrc .zshrc
         cp dotfiles/vim/mylinux/vimrc .vimrc

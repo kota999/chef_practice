@@ -5,7 +5,7 @@
   "run_list": [
     "recipe[zsh]",
     "recipe[git]",
-    "recipe[natsume]",
+    "recipe[add_user]",
     "recipe[dstat]",
     "recipe[gcc]",
     "recipe[make]",

@@ -1,11 +1,11 @@
-natsume CHANGELOG
-=================
+add_user CHANGELOG
+==================
 
-This file is used to list changes made in each version of the natsume cookbook.
+This file is used to list changes made in each version of the add_user cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of natsume
+- [your_name] - Initial release of add_user
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

@@ -24,12 +24,12 @@ end
     end
 end
 
-git "/home/natsume/local/matplotlib" do
+git "/home/testname/local/matplotlib" do
     repository "git://github.com/matplotlib/matplotlib.git"
     reference "master"
     action :checkout
-    user "natsume"
-    group "webdb"
+    user "testname"
+    group "test"
 end
 
 bash "cfitsio" do
@@ -63,10 +63,10 @@ bash "freetype" do
 end
 
 bash "pythonbrew" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         if ! [ -e .pythonbrew ]; then
             curl -kL http://xrl.us/pythonbrewinstall | bash
@@ -81,10 +81,10 @@ bash "pythonbrew" do
 end
 
 bash "minuit" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         export MINUIT=$HOME/local/minuit
         if ! [ -e $MINUIT/Minuit-1_7_9 ]; then
@@ -101,10 +101,10 @@ bash "minuit" do
 end
 
 bash "pip_package" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         source $HOME/.pythonbrew/etc/bashrc
         pybrew venv use lab -p 2.7.3
@@ -125,10 +125,10 @@ bash "pip_package" do
 end
 
 bash "pyminuit" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         export PYMINUIT=$HOME/local/pyminuit
         MINUIT=$HOME/local/minuit
@@ -150,10 +150,10 @@ bash "pyminuit" do
 end
 
 bash "matplotlib" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         export SITE_PACKAGES=$HOME/.pythonbrew/venvs/Python-2.7.3/lab/lib/python2.7/site-packages
         if ! [ -e $SITE_PACKAGES/matplotlib ]; then

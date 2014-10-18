@@ -1,0 +1,6 @@
+{
+    "id" : "testname",
+    "username" : "testname",
+    "home" : "/home/testname",
+    "shell" : "/bin/zsh"
+}

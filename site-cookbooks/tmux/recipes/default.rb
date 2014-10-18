@@ -23,10 +23,10 @@ package "tmux" do
 end
 
 bash "tmux.conf" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         cp dotfiles/.tmux.conf .tmux.conf
     EOC

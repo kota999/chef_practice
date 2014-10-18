@@ -6,19 +6,19 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-git "/home/natsume/local/scipy" do
+git "/home/testname/local/scipy" do
     repository "git://github.com/scipy/scipy.git"
     reference "master"
     action :checkout
-    user "natsume"
-    group "webdb"
+    user "testname"
+    group "test"
 end
 
 bash "scipy" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         export SITE_PACKAGES=$HOME/.pythonbrew/venvs/Python-2.7.3/lab/lib/python2.7/site-packages
         if ! [ -e $SITE_PACKAGES/Cython ]; then

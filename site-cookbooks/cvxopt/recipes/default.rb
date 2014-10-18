@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cuda
+# Cookbook Name:: cvxopt
 # Recipe:: default
 #
 # Copyright 2014, YOUR_COMPANY_NAME
@@ -7,10 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 bash "cvxopt" do
-    user "natsume"
-    group "webdb"
-    cwd "/home/natsume"
-    environment "HOME" => "/home/natsume"
+    user "testname"
+    group "test"
+    cwd "/home/testname"
+    environment "HOME" => "/home/testname"
     code <<-EOC
         cd $HOME/local
         if ! [ -e cvxopt-1.1.5 ]; then
